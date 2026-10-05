@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: 'Kantumruy Pro', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Base Dark Mode Configuration */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #080c14;
+  color: #f1f5f9;
+}
+
+/* Custom scrollbars for clean mobile-like feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark mode scrollbars */
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Global High-Contrast Dark Mode Utility Adaptations */
+html.dark .bg-slate-100 {
+  background-color: #0b0f19;
+}
+
+html.dark .bg-white:not(.preserve-light):not(.qr-box):not([data-preserve-light="true"]) {
+  background-color: #111827;
+  color: #f8fafc;
+}
+
+html.dark .bg-slate-50:not(.preserve-light):not([data-preserve-light="true"]) {
+  background-color: #0d1424;
+}
+
+html.dark .border-slate-200 {
+  border-color: #1e293b;
+}
+
+html.dark .border-slate-100 {
+  border-color: #1e293b;
+}
+
+html.dark .border-slate-300 {
+  border-color: #334155;
+}
+
+html.dark .text-slate-900:not(.preserve-text) {
+  color: #f8fafc;
+}
+
+html.dark .text-slate-800:not(.preserve-text) {
+  color: #f1f5f9;
+}
+
+html.dark .text-slate-700:not(.preserve-text) {
+  color: #cbd5e1;
+}
+
+html.dark .text-slate-600:not(.preserve-text) {
+  color: #94a3b8;
+}
+
+html.dark .text-slate-500:not(.preserve-text) {
+  color: #8b9bb4;
+}
+
+/* Inputs and interactive elements in dark mode */
+html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(.preserve-input),
+html.dark select:not(.preserve-input),
+html.dark textarea:not(.preserve-input) {
+  background-color: #0b0f19;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b;
+}
+
+/* Modals in dark mode */
+html.dark .backdrop-blur-sm,
+html.dark .backdrop-blur-md {
+  background-color: rgba(4, 7, 13, 0.85);
+}
+
+/* Leaflet & Map Customization */
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e2e8f0;
+}
+.leaflet-popup-tip {
+  background: white;
+}
+
+html.dark .leaflet-popup-content-wrapper {
+  background-color: #111827;
+  color: #f8fafc;
+  border-color: #334155;
+}
+html.dark .leaflet-popup-tip {
+  background-color: #111827;
+}
+
+/* Smooth fade-in transition for App UI when toggling language or theme */
+@keyframes app-lang-fade-in {
+  0% {
+    opacity: 0.2;
+    transform: translateY(3px) scale(0.998);
+  }
+  60% {
+    opacity: 0.92;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-lang-fade-in {
+  animation: app-lang-fade-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes leaflet-ping {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-lang-fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Print Media Styles for Official Delivery Labels */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-delivery-label,
+  #printable-delivery-label * {
+    visibility: visible;
+  }
+  #printable-delivery-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 105mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: 2px solid #000 !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+

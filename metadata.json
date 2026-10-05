@@ -1,0 +1,8 @@
+{
+  "name": "CamDelivery Free",
+  "description": "កម្មវិធីដឹកជញ្ជូនឯករាជ្យឥតគិតថ្លៃសម្រាប់ប្រទេសកម្ពុជា (ផ្ញើឥវ៉ាន់ ២៥ ខេត្ត-ក្រុង ម្ហូបអាហារ កង់បី និងតាមដានផ្ទាល់ គ្មានកម្រៃជើងសារ 0%)",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
+
